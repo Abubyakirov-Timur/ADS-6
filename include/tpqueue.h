@@ -4,20 +4,20 @@
 
 template<typename T, int size>
 class TPQueue {
-  private:
-    T a[size] = {0};
+ private:
+    T n[size] = {0};
     int first = 0, last = 0;
  public:
   void push(T value) {
-      int i = last;
-      while ((--i >= first) && (value.prior > a[i % size].prior)) {
-          a[(i + 1) % size] = a[i % size];
+      int j = last;
+      while ((--j >= first) && (value.prior > n[j % size].prior)) {
+          n[(j + 1) % size] = n[j % size];
       }
-      a[(i+1) % size] = value;
+      n[(j+1) % size] = value;
       last++;
   }
   T pop() {
-      return a[(first++) % size];
+      return n[(first++) % size];
   }
 };
 
